@@ -1,74 +1,110 @@
-🧠 Brain Tumor Classification System
-This project implements a Brain Tumor Classification System using Convolutional Neural Networks (CNNs) to detect tumor types from MRI images. It uses a custom-trained model and features an interactive Gradio UI for image-based predictions.
 
-🔍 Features
-✅ Classifies brain MRI scans into:
+# 🧠 Brain Tumor Classification System
 
-Glioma
+This project implements a **Brain Tumor Classification System** using **Convolutional Neural Networks (CNNs)** to detect tumor types from **MRI images**. It uses a custom-trained model and features an interactive **Gradio UI** for image-based predictions.
 
-Meningioma
+---
 
-No Tumor
+## 🔍 Features
 
-Pituitary
+* ✅ **Classifies brain MRI scans** into the following categories:
 
-✅ Built with TensorFlow/Keras for model architecture and training
+  * **Glioma**
+  * **Meningioma**
+  * **No Tumor**
+  * **Pituitary**
 
-✅ Uses OpenCV for image preprocessing
+* ✅ Built with **TensorFlow/Keras** for model architecture and training.
 
-✅ Applies LabelBinarizer for multi-class output encoding
+* ✅ Uses **OpenCV** for **image preprocessing**.
 
-✅ Provides an intuitive Gradio interface for drag-and-drop predictions
+* ✅ Applies **LabelBinarizer** for multi-class output encoding.
 
-🧠 How It Works
-Load and preprocess brain MRI images (resized to 128x128).
+* ✅ Provides an intuitive **Gradio interface** for **drag-and-drop predictions**.
 
-Train a CNN model using layers like:
+---
 
-Conv2D
+## 🧠 How It Works
 
-MaxPooling2D
+1. **Load and preprocess** brain MRI images (resized to 128x128 pixels).
+2. **Train a CNN model** using layers like:
 
-Dropout
+   * **Conv2D**: For feature extraction from MRI images.
+   * **MaxPooling2D**: To reduce the spatial dimensions of the feature maps.
+   * **Dropout**: To prevent overfitting during training.
+3. **Predict tumor type** from new MRI images using the trained model.
+4. **Display results** with confidence scores via the Gradio interface.
 
-Predict tumor type from new MRI images using the trained model.
+---
 
-Display results with confidence scores via the Gradio interface.
+## 📁 Requirements
 
-📁 Requirements
-Make sure you have Python 3.x installed and the following libraries:
+Make sure you have **Python 3.x** installed and the following libraries:
 
+```bash
 pip install tensorflow opencv-python numpy scikit-learn gradio
-If running in Google Colab, also install:
+```
 
+If running in **Google Colab**, also install:
+
+```bash
 pip install google-colab
-🚀 Usage
-Option 1: Run in Google Colab
-Upload your dataset to your Google Drive.
+```
 
-Mount Google Drive in your Colab notebook:
+---
 
-from google.colab import drive
-drive.mount('/content/drive')
-Ensure your dataset path is correctly referenced (e.g., /content/drive/MyDrive/brain_tumor_dataset).
+## 🚀 Usage
 
-Option 2: Run Locally
-Clone/download the project and place the dataset in a directory:
+### Option 1: Run in Google Colab
 
-brain_tumor_classification/
-├── model/
-├── dataset/
-│   ├── glioma/
-│   ├── meningioma/
-│   ├── notumor/
-│   └── pituitary/
-├── main.py
-└── ...
-Run the script:
+1. Upload your dataset to your **Google Drive**.
 
-python main.py
-🖼️ Gradio UI
-Once the model is trained or loaded, Gradio will launch an interactive web interface for you to upload an image and view predictions:
+2. Mount Google Drive in your Colab notebook:
 
+   ```python
+   from google.colab import drive
+   drive.mount('/content/drive')
+   ```
+
+3. Ensure your dataset path is correctly referenced (e.g., `/content/drive/MyDrive/brain_tumor_dataset`).
+
+---
+
+### Option 2: Run Locally
+
+1. Clone or download the project and place the dataset in a directory structure like this:
+
+   ```plaintext
+   brain_tumor_classification/
+   ├── model/
+   ├── dataset/
+   │   ├── glioma/
+   │   ├── meningioma/
+   │   ├── notumor/
+   │   └── pituitary/
+   ├── main.py
+   └── ...
+   ```
+
+2. Run the script:
+
+   ```bash
+   python main.py
+   ```
+
+---
+
+## 🖼️ Gradio UI
+
+Once the model is trained or loaded, **Gradio** will launch an interactive web interface where you can **upload an image** and view the predicted tumor type.
+
+Here's the Gradio code to launch the interface:
+
+```python
 import gradio as gr
+
 gr.Interface(fn=predict_fn, inputs="image", outputs="label").launch()
+```
+
+---
+
